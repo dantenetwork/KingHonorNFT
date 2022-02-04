@@ -3,12 +3,13 @@
 pragma solidity ^0.8.0;
 
 import "./ERC721Tradable.sol";
+import "./ConsumerBase.sol";
 
 /**
  * @title Creature
  * Creature - a contract for my non-fungible creatures.
  */
-contract KingHonorNFTView is ERC721Tradable {
+contract KingHonorNFTView is ERC721Tradable, ConsumerBase {
     constructor(
         string memory _name,
         string memory _symbol,
@@ -22,6 +23,18 @@ contract KingHonorNFTView is ERC721Tradable {
 
     function contractURI() public pure returns (string memory) {
         return "https://king-honor-nft.oss-cn-beijing.aliyuncs.com/contract.json";
+    }
+
+    /**
+     * This is used instead of msg.sender as transactions won't be sent by the original token owner, but by OpenSea.
+     */
+    function _msgSender()
+        internal
+        override
+        view
+        returns (address sender)
+    {
+        return ContextMixin.msgSender();
     }
 
     // forbiden

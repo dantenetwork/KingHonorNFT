@@ -88,16 +88,4 @@ abstract contract ERC721Tradable is ERC721, ContextMixin, NativeMetaTransaction,
 
         return super.isApprovedForAll(owner, operator);
     }
-
-    /**
-     * This is used instead of msg.sender as transactions won't be sent by the original token owner, but by OpenSea.
-     */
-    function _msgSender()
-        internal
-        override
-        view
-        returns (address sender)
-    {
-        return ContextMixin.msgSender();
-    }
 }
