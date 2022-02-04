@@ -8,7 +8,7 @@ import "./ERC721Tradable.sol";
  * @title Creature
  * Creature - a contract for my non-fungible creatures.
  */
-contract KinHonorNFT is ERC721Tradable {
+contract KingHonorNFT is ERC721Tradable {
     constructor(
         string memory _name,
         string memory _symbol,
