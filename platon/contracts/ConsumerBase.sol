@@ -23,6 +23,7 @@ contract ConsumerBase is Ownable {
         mapping(string => DestinationMethod) storage map = methodMap[_toChain];
         DestinationMethod storage method = map[_methodName];
         method.contractAddress = _contractAddress;
+        method.methodName = _methodName;
         method.used = true;
     }
 
