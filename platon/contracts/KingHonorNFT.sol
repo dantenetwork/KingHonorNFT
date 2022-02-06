@@ -58,20 +58,20 @@ contract KingHonorNFT is ERC721Tradable, ConsumerBase {
         super.transferFrom(from, to, tokenId);
 
         bytes memory data = abi.encode(from, to, tokenId);
-        crossChainCall(TO_CHAIN, "transferFrom", data);
+        crossChainCall(TO_CHAIN, "crossChainTransferFrom", data);
     }
 
     function safeTransferFrom(address from, address to, uint256 tokenId) public override {
         super.safeTransferFrom(from, to, tokenId, "");
 
         bytes memory data = abi.encode(from, to, tokenId, "");
-        crossChainCall(TO_CHAIN, "safeTransferFrom", data);
+        crossChainCall(TO_CHAIN, "crossChainSafeTransferFrom", data);
     }
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata _data) public override {
         super.safeTransferFrom(from, to, tokenId, _data);
 
         bytes memory data = abi.encode(from, to, tokenId, _data);
-        crossChainCall(TO_CHAIN, "safeTransferFrom", data);
+        crossChainCall(TO_CHAIN, "crossChainSafeTransferFrom", data);
     }
 }
