@@ -14,6 +14,8 @@ contract ConsumerBase is Ownable {
     ICrossChain public crossChainContract;
     // Cross-chain method map
     mapping(string => mapping(string => DestinationMethod)) public methodMap;
+    // Cross-chain source sender map
+    mapping(string => mapping(string => string)) public senderMap;
 
     function registerInterface(string calldata _funcName, string calldata _interface) onlyOwner virtual external {
         crossChainContract.registerInterface(_funcName, _interface);
@@ -33,5 +35,17 @@ contract ConsumerBase is Ownable {
 
     function setCrossChainContract(address _address) onlyOwner public {
         crossChainContract = ICrossChain(_address);
+    }
+
+    function registerSourceSender(string calldata _chainName, string calldata _sender, string calldata _methodName) onlyOwner external {
+        mapping(string => string) storage map = senderMap[_chainName];
+        map[_methodName] = _sender;
+    }
+
+    function verify(string calldata _chainName, string calldata _methodName, string calldata _sender) public virtual view returns (bool) {
+        mapping(string => string) storage map = senderMap[_chainName];
+        string storage sender = map[_methodName];
+        require(keccak256(bytes(sender)) == keccak256(bytes(_sender)), "Sender does not match");
+        return true;
     }
 }
