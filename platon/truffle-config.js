@@ -41,8 +41,12 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    platon: {
+    platonDev: {
       provider: () => new HDWalletProvider(mnemonic, `http://35.247.155.162:6789`),
+      network_id: "*",       // Any network (default: none)
+    },
+    platon: {
+      provider: () => new HDWalletProvider(mnemonic, `https://openapi.platon.network/rpc`),
       network_id: "*",       // Any network (default: none)
     },
     // development: {
