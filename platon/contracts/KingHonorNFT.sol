@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "./ERC721Tradable.sol";
 import "./ConsumerBase.sol";
 
-string constant TO_CHAIN = "ETHEREUM";
+string constant TO_CHAIN = "RINKEBY";
 
 /**
  * @title Creature
