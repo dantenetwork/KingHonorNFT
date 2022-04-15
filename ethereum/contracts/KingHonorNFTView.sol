@@ -18,7 +18,7 @@ contract KingHonorNFTView is ERC721Tradable, ConsumerBase {
     {}
 
     function baseTokenURI() override public pure returns (string memory) {
-        return "https://king-honor-nft.oss-cn-beijing.aliyuncs.com/";
+        return "https://raw.githubusercontent.com/wuyahuang/opensea/main/";
     }
 
     function contractURI() public pure returns (string memory) {

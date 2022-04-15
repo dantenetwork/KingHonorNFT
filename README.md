@@ -30,7 +30,7 @@ truffle migrate --network platonDev --reset
 **ethereum**
 ```
 cd ethereum
-truffle migrate --network rinkeby --reset
+truffle migrate --network rinkeby --reset --skip-dry-run
 ```
 
 ### 2.Configure contract addresses

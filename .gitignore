@@ -2,3 +2,4 @@ platon/node_modules
 platon/build
 ethereum/node_modules
 ethereum/build
+.DS_Store
